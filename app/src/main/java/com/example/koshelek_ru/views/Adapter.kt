@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koshelek_ru.R
 import com.example.koshelek_ru.network.Post
+import retrofit2.Call
 
 class Adapter(var items: List<Post>) :
 

@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
 data class Post(
     @SerializedName("message")
     @Expose
-    val message: Message,
+    val message: List<String>,
     @SerializedName("status")
     @Expose
     val status: String
@@ -31,7 +31,7 @@ data class Message(
     val appenzeller: List<String>,
     @SerializedName("australian")
     @Expose
-    val australian: Australian,
+    val australian: List<String>,
     @SerializedName("basenji")
     @Expose
     val basenji: List<String>,
@@ -58,25 +58,25 @@ data class Message(
     val briard: List<String>,
     @SerializedName("buhund")
     @Expose
-    val buhund: Buhund,
+    val buhund: List<String>,
     @SerializedName("bulldog")
     @Expose
-    val bulldog: Bulldog,
+    val bulldog: List<String>,
     @SerializedName("bullterrier")
     @Expose
-    val bullterrier: Bullterrier,
+    val bullterrier: List<String>,
     @SerializedName("cairn")
     @Expose
     val cairn: List<String>,
     @SerializedName("cattledog")
     @Expose
-    val cattledog: Cattledog,
+    val cattledog: List<String>,
     @SerializedName("chihuahua")
     @Expose
     val chihuahua: List<String>,
     @SerializedName("chow")
     @Expose
-    val chow: Bullterrier,
+    val chow: List<String>,
     @SerializedName("clumber")
     @Expose
     val clumber: List<String>,
@@ -85,13 +85,13 @@ data class Message(
     val cockapoo: List<String>,
     @SerializedName("collie")
     @Expose
-    val collie: Collie,
+    val collie: List<String>,
     @SerializedName("coonhound")
     @Expose
     val coonhound: List<String>,
     @SerializedName("corgi")
     @Expose
-    val corgi: Corgi,
+    val corgi: List<String>,
     @SerializedName("cotondetulear")
     @Expose
     val cotondetulear: List<String>,
@@ -103,10 +103,10 @@ data class Message(
     val dalmatian: List<String>,
     @SerializedName("dane")
     @Expose
-    val dane: Dane,
+    val dane: List<String>,
     @SerializedName("deerhound")
     @Expose
-    val deerhound: Deerhound,
+    val deerhound: List<String>,
     @SerializedName("dhole")
     @Expose
     val dhole: List<String>,
@@ -118,7 +118,7 @@ data class Message(
     val doberman: List<String>,
     @SerializedName("elkhound")
     @Expose
-    val elkhound: Elkhound,
+    val elkhound: List<String>,
     @SerializedName("entlebucher")
     @Expose
     val entlebucher: List<String>,
@@ -127,16 +127,16 @@ data class Message(
     val eskimo: List<String>,
     @SerializedName("finnish")
     @Expose
-    val finnish: Finnish,
+    val finnish: List<String>,
     @SerializedName("frise")
     @Expose
-    val frise: Frise,
+    val frise: List<String>,
     @SerializedName("germanshepherd")
     @Expose
     val germanshepherd: List<String>,
     @SerializedName("greyhound")
     @Expose
-    val greyhound: Greyhound,
+    val greyhound: List<String>,
     @SerializedName("groenendael")
     @Expose
     val groenendael: List<String>,
@@ -145,7 +145,7 @@ data class Message(
     val havanese: List<String>,
     @SerializedName("hound")
     @Expose
-    val hound: Hound,
+    val hound: List<String>,
     @SerializedName("husky")
     @Expose
     val husky: List<String>,
@@ -181,7 +181,7 @@ data class Message(
     val maltese: List<String>,
     @SerializedName("mastiff")
     @Expose
-    val mastiff: Mastiff,
+    val mastiff: List<String>,
     @SerializedName("mexicanhairless")
     @Expose
     val mexicanhairless: List<String>,
@@ -190,7 +190,7 @@ data class Message(
     val mix: List<String>,
     @SerializedName("mountain")
     @Expose
-    val mountain: Mountain,
+    val mountain: List<String>,
     @SerializedName("newfoundland")
     @Expose
     val newfoundland: List<String>,
@@ -199,7 +199,7 @@ data class Message(
     val otterhound: List<String>,
     @SerializedName("ovcharka")
     @Expose
-    val ovcharka: Ovcharka,
+    val ovcharka: List<String>,
     @SerializedName("papillon")
     @Expose
     val papillon: List<String>,
@@ -211,19 +211,19 @@ data class Message(
     val pembroke: List<String>,
     @SerializedName("pinscher")
     @Expose
-    val pinscher: Pinscher,
+    val pinscher: List<String>,
     @SerializedName("pitbull")
     @Expose
     val pitbull: List<String>,
     @SerializedName("pointer")
     @Expose
-    val pointer: Pointer,
+    val pointer: List<String>,
     @SerializedName("pomeranian")
     @Expose
     val pomeranian: List<String>,
     @SerializedName("poodle")
     @Expose
-    val poodle: Poodle,
+    val poodle: List<String>,
     @SerializedName("pug")
     @Expose
     val pug: List<String>,
@@ -238,10 +238,10 @@ data class Message(
     val redbone: List<String>,
     @SerializedName("retriever")
     @Expose
-    val retriever: Retriever,
+    val retriever: List<String>,
     @SerializedName("ridgeback")
     @Expose
-    val ridgeback: Ridgeback,
+    val ridgeback: List<String>,
     @SerializedName("rottweiler")
     @Expose
     val rottweiler: List<String>,
@@ -256,13 +256,13 @@ data class Message(
     val schipperke: List<String>,
     @SerializedName("schnauzer")
     @Expose
-    val schnauzer: Schnauzer,
+    val schnauzer: List<String>,
     @SerializedName("setter")
     @Expose
-    val setter: Setter,
+    val setter: List<String>,
     @SerializedName("sheepdog")
     @Expose
-    val sheepdog: Sheepdog,
+    val sheepdog: List<String>,
     @SerializedName("shiba")
     @Expose
     val shiba: List<String>,
@@ -271,22 +271,22 @@ data class Message(
     val shihtzu: List<String>,
     @SerializedName("spaniel")
     @Expose
-    val spaniel: Spaniel,
+    val spaniel: List<String>,
     @SerializedName("springer")
     @Expose
-    val springer: Springer,
+    val springer: List<String>,
     @SerializedName("stbernard")
     @Expose
     val stbernard: List<String>,
     @SerializedName("terrier")
     @Expose
-    val terrier: Terrier,
+    val terrier: List<String>,
     @SerializedName("vizsla")
     @Expose
     val vizsla: List<String>,
     @SerializedName("waterdog")
     @Expose
-    val waterdog: Waterdog,
+    val waterdog: List<String>,
     @SerializedName("weimaraner")
     @Expose
     val weimaraner: List<String>,
@@ -295,326 +295,5 @@ data class Message(
     val whippet: List<String>,
     @SerializedName("wolfhound")
     @Expose
-    val wolfhound: Wolfhound
-)
-
-data class Australian(
-    @SerializedName("shepherd")
-    @Expose
-    val shepherd: String
-)
-
-data class Buhund(
-    @SerializedName("norwegian")
-    @Expose
-    val norwegian: String
-)
-
-data class Bulldog(
-    @SerializedName("boston")
-    @Expose
-    val boston: String,
-    @SerializedName("english")
-    @Expose
-    val english: String,
-    @SerializedName("french")
-    @Expose
-    val french: String
-)
-
-data class Bullterrier(
-    @SerializedName("staffordshire")
-    @Expose
-    val staffordshire: String
-)
-
-data class Cattledog(
-    @SerializedName("australian")
-    @Expose
-    val australian: String
-)
-
-data class Collie(
-    @SerializedName("border")
-    @Expose
-    val border: String
-)
-
-data class Corgi(
-    @SerializedName("cardigan")
-    @Expose
-    val cardigan: String
-)
-
-data class Dane(
-    @SerializedName("great")
-    @Expose
-    val great: String
-)
-
-data class Deerhound(
-    @SerializedName("scottish")
-    @Expose
-    val scottish: String
-)
-
-data class Elkhound(
-    @SerializedName("norwegian")
-    @Expose
-    val norwegian: String
-)
-
-data class Finnish(
-    @SerializedName("lapphund")
-    @Expose
-    val lapphund: String
-)
-
-data class Frise(
-    @SerializedName("bichon")
-    @Expose
-    val bichon: String
-)
-
-data class Greyhound(
-    @SerializedName("italian")
-    @Expose
-    val italian: String
-)
-
-data class Hound(
-    @SerializedName("afghan")
-    @Expose
-    val afghan: String,
-    @SerializedName("basset")
-    @Expose
-    val basset: String,
-    @SerializedName("blood")
-    @Expose
-    val blood: String,
-    @SerializedName("english")
-    @Expose
-    val english: String,
-    @SerializedName("ibizan")
-    @Expose
-    val ibizan: String,
-    @SerializedName("plott")
-    @Expose
-    val plott: String,
-    @SerializedName("walker")
-    @Expose
-    val walker: String
-)
-
-data class Mastiff(
-    @SerializedName("bull")
-    @Expose
-    val bull: String,
-    @SerializedName("english")
-    @Expose
-    val english: String,
-    @SerializedName("tibetan")
-    @Expose
-    val tibetan: String
-)
-
-data class Mountain(
-    @SerializedName("bernese")
-    @Expose
-    val bernese: String,
-    @SerializedName("swiss")
-    @Expose
-    val swiss: String
-)
-
-data class Ovcharka(
-    @SerializedName("caucasian")
-    @Expose
-    val caucasian: String
-)
-
-data class Pinscher(
-    @SerializedName("miniature")
-    @Expose
-    val miniature: String
-)
-
-data class Pointer(
-    @SerializedName("german")
-    @Expose
-    val german: String,
-    @SerializedName("germanlonghair")
-    @Expose
-    val germanlonghair: String
-)
-
-data class Poodle(
-    @SerializedName("miniature")
-    @Expose
-    val miniature: String,
-    @SerializedName("standard")
-    @Expose
-    val standard: String,
-    @SerializedName("toy")
-    @Expose
-    val toy: String
-)
-
-data class Retriever(
-    @SerializedName("chesapeake")
-    @Expose
-    val chesapeake: String,
-    @SerializedName("curly")
-    @Expose
-    val curly: String,
-    @SerializedName("flatcoated")
-    @Expose
-    val flatcoated: String,
-    @SerializedName("golden")
-    @Expose
-    val golden: String
-)
-
-data class Ridgeback(
-    @SerializedName("rhodesian")
-    @Expose
-    val rhodesian: String
-)
-
-data class Schnauzer(
-    @SerializedName("giant")
-    @Expose
-    val giant: String,
-    @SerializedName("miniature")
-    @Expose
-    val miniature: String
-)
-
-data class Setter(
-    @SerializedName("english")
-    @Expose
-    val english: String,
-    @SerializedName("gordon")
-    @Expose
-    val gordon: String,
-    @SerializedName("irish")
-    @Expose
-    val irish: String
-)
-
-data class Sheepdog(
-    @SerializedName("english")
-    @Expose
-    val english: String,
-    @SerializedName("shetland")
-    @Expose
-    val shetland: String
-)
-
-data class Spaniel(
-    @SerializedName("blenheim")
-    @Expose
-    val blenheim: String,
-    @SerializedName("brittany")
-    @Expose
-    val brittany: String,
-    @SerializedName("cocker")
-    @Expose
-    val cocker: String,
-    @SerializedName("irish")
-    @Expose
-    val irish: String,
-    @SerializedName("japanese")
-    @Expose
-    val japanese: String,
-    @SerializedName("sussex")
-    @Expose
-    val sussex: String,
-    @SerializedName("welsh")
-    @Expose
-    val welsh: String
-)
-
-data class Springer(
-    @SerializedName("english")
-    @Expose
-    val english: String
-)
-
-data class Terrier(
-    @SerializedName("american")
-    @Expose
-    val american: String,
-    @SerializedName("australian")
-    @Expose
-    val australian: String,
-    @SerializedName("bedlington")
-    @Expose
-    val bedlington: String,
-    @SerializedName("border")
-    @Expose
-    val border: String,
-    @SerializedName("dandie")
-    @Expose
-    val dandie: String,
-    @SerializedName("fox")
-    @Expose
-    val fox: String,
-    @SerializedName("irish")
-    @Expose
-    val irish: String,
-    @SerializedName("kerryblue")
-    @Expose
-    val kerryblue: String,
-    @SerializedName("lakeland")
-    @Expose
-    val lakeland: String,
-    @SerializedName("norfolk")
-    @Expose
-    val norfolk: String,
-    @SerializedName("norwich")
-    @Expose
-    val norwich: String,
-    @SerializedName("patterdale")
-    @Expose
-    val patterdale: String,
-    @SerializedName("russell")
-    @Expose
-    val russell: String,
-    @SerializedName("scottish")
-    @Expose
-    val scottish: String,
-    @SerializedName("sealyham")
-    @Expose
-    val sealyham: String,
-    @SerializedName("silky")
-    @Expose
-    val silky: String,
-    @SerializedName("tibetan")
-    @Expose
-    val tibetan: String,
-    @SerializedName("toy")
-    @Expose
-    val toy: String,
-    @SerializedName("westhighland")
-    @Expose
-    val westhighland: String,
-    @SerializedName("wheaten")
-    @Expose
-    val wheaten: String,
-    @SerializedName("yorkshire")
-    @Expose
-    val yorkshire: String
-)
-
-data class Waterdog(
-    @SerializedName("spanish")
-    @Expose
-    val spanish: String
-)
-
-data class Wolfhound(
-    @SerializedName("irish")
-    @Expose
-    val irish: String
+    val wolfhound: List<String>
 )
