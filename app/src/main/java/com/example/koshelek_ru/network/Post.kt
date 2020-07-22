@@ -1,4 +1,4 @@
-package com.example.ttt.data.network
+package com.example.koshelek_ru.network
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -10,7 +10,7 @@ data class Post(
     val message: Message,
     @SerializedName("status")
     @Expose
-    val status: Float = 0f
+    val status: String
 )
 
 data class Message(

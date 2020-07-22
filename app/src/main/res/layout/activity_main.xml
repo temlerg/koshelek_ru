@@ -69,6 +69,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleList"
         android:layout_width="match_parent"
         tools:listitem="@layout/card_item"
         android:layout_height="614dp"
