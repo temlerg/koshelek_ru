@@ -70,12 +70,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleList"
-        android:layout_width="match_parent"
-        tools:listitem="@layout/card_item"
-        android:layout_height="614dp"
+        android:layout_width="wrap_content"
+        android:layout_height="513dp"
+        android:layout_marginTop="1.5dp"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/card_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

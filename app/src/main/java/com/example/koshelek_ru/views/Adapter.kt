@@ -10,9 +10,7 @@ import com.example.koshelek_ru.R
 import com.example.koshelek_ru.network.Post
 import retrofit2.Call
 
-class Adapter(var items: List<Post>) :
-
-    RecyclerView.Adapter<Adapter.MainHolder>() {
+class Adapter(var items: List<String>) : RecyclerView.Adapter<Adapter.MainHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = MainHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.card_item, parent, false)
     )
@@ -28,8 +26,8 @@ class Adapter(var items: List<Post>) :
         private val message = itemView.findViewById<TextView>(R.id.breeds_item)
         private val status = String
 
-        fun bind(item: Post) {
-            message.text = item.message.toString()
+        fun bind(item: String) {
+            message.text = item
         }
     }
 }

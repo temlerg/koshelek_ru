@@ -1,6 +1,5 @@
-package com.example.ttt.data.network
+package com.example.koshelek_ru.network
 
-import com.example.koshelek_ru.network.JSON
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -20,12 +19,12 @@ object NetworkService {
         .addInterceptor(loggingInterceptor)
         .build()
 
-    fun getApiRepositories(): JSON {
+    fun getApiRepositories(): JSONMainBreeds {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
-            .create(JSON::class.java)
+            .create(JSONMainBreeds::class.java)
     }
 }
