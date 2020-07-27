@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_main_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import com.example.koshelek_ru.fragment.Sub_breeds
 
 
 class Main_Breeds : BaseFragment() {
@@ -29,16 +30,31 @@ class Main_Breeds : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val repository = Repository()
+        val repository_main = Repository()
+        val repository_sub = Repository()
 
-        repository.getBreeds().enqueue(object : Callback<Post> {
+        repository_main.getMainBreeds().enqueue(object : Callback<Post> {
             override fun onResponse(call: Call<Post>, response: Response<Post>) {
                 if (response.body() != null) {
                     val listRepo = response.body()!!.message
                     recycleList.layoutManager = LinearLayoutManager(context)
                     val adapter = Adapter(listRepo) {
                         val s = it
-                        ttt.text = s
+
+                        repository_sub.getSubBreeds(s).enqueue(object : Callback<Post> {
+                            override fun onResponse(call: Call<Post>, response: Response<Post>) {
+                                if (response.body() != null) {
+                                    if (response.body()!!.message.isNotEmpty())
+                                        openPage(Sub_breeds.getInstance(s))
+                                    else openPage(Image.getInstance(s))
+
+                                }
+                            }
+
+                            override fun onFailure(call: Call<Post>, t: Throwable) {
+                                TODO("Not yet implemented")
+                            }
+                        })
                     }
                     recycleList.adapter = adapter
                 }
@@ -54,11 +70,6 @@ class Main_Breeds : BaseFragment() {
             container,
             false
         )
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
     }
 
     private fun openPage(fragment: BaseFragment) {

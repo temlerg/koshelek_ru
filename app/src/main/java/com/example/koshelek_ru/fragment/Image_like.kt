@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.koshelek_ru.R
 
 
-class Image_like : Fragment() {
+class Image_like : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

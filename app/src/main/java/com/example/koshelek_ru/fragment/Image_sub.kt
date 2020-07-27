@@ -18,48 +18,55 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class Image : BaseFragment() {
-    private var breed: String? = null
+class Image_sub : BaseFragment() {
+    private var sub: String? = null
+    private var main_b: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {}
+        arguments?.let {
+            sub = it.getString(SUB)
+            main_b = it.getString(M_B)
+        }
     }
 
     companion object {
-        const val BREED = "breed"
+        const val SUB = "sub"
+        const val M_B = "M_B"
 
-        fun getInstance(breed: String): Image {
-            val fragment = Image()
-            val args = Bundle()
-            args.putString(BREED, breed)
-            fragment.arguments = args
-            return fragment
-        }
+        fun getInstance(sub: String, main_b: String) =
+            Image_sub().apply {
+                arguments = Bundle().apply {
+                    putString(SUB, sub)
+                    putString(M_B, main_b)
+                }
+            }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        breed = arguments?.getString(Sub_breeds.BREED)
-        val repository = Repository()
-        repository.getMainBreedImage(breed.toString()).enqueue(object : Callback<Post> {
-            override fun onResponse(call: Call<Post>, response: Response<Post>) {
-                val listRepo = response.body()!!.message
-                image_id.layoutManager = LinearLayoutManager(context)
-                val adapter = Adapter_image(listRepo)
-                image_id.adapter = adapter
-            }
 
-            override fun onFailure(call: Call<Post>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-        })
+
+        val repository = Repository()
+        repository.getSubBreedImage(sub.toString(), main_b.toString())
+            .enqueue(object : Callback<Post> {
+                override fun onResponse(call: Call<Post>, response: Response<Post>) {
+
+                    val listRepo = response.body()!!.message
+                    image_id.layoutManager = LinearLayoutManager(context)
+                    val adapter = Adapter_image(listRepo)
+                    image_id.adapter = adapter
+                }
+
+                override fun onFailure(call: Call<Post>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+            })
 
         return inflater.inflate(R.layout.image, container, false)
     }
-
 
     private fun openPage(fragment: BaseFragment) {
         Activity.supportFragmentManager
@@ -68,6 +75,4 @@ class Image : BaseFragment() {
             .addToBackStack("")
             .commit()
     }
-
-
 }

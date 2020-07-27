@@ -19,12 +19,39 @@ object NetworkService {
         .addInterceptor(loggingInterceptor)
         .build()
 
-    fun getApiRepositories(): JSONMainBreeds {
+    fun getApiRepositoriesMain(): JSONMainBreeds {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
             .create(JSONMainBreeds::class.java)
+    }
+
+    fun getApiRepositoriesSub(): JSONSub_breeds {
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+            .create(JSONSub_breeds::class.java)
+    }
+
+    fun getApiRepositoriesMainImage(): JSONImage_main {
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+            .create(JSONImage_main::class.java)
+    }
+
+    fun getApiRepositoriesSubBreedImage(): JSONImage_sub{
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+            .create(JSONImage_sub::class.java)
     }
 }
