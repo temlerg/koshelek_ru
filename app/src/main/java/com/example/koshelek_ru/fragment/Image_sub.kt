@@ -1,18 +1,17 @@
 package com.example.koshelek_ru.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.koshelek_ru.Activity.dialog_erroe
+import com.example.koshelek_ru.Activity.dialog_share
 import com.example.koshelek_ru.R
 import com.example.koshelek_ru.models.Repository
 import com.example.koshelek_ru.network.Post
-import com.example.koshelek_ru.views.Adapter
-import com.example.koshelek_ru.views.Adapter_image
+import com.example.koshelek_ru.views.Adapter_image_sub
 import kotlinx.android.synthetic.main.image.*
-import kotlinx.android.synthetic.main.sub_breeds.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,8 +46,6 @@ class Image_sub : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
         val repository = Repository()
         repository.getSubBreedImage(sub.toString(), main_b.toString())
             .enqueue(object : Callback<Post> {
@@ -56,8 +53,11 @@ class Image_sub : BaseFragment() {
 
                     val listRepo = response.body()!!.message
                     image_id.layoutManager = LinearLayoutManager(context)
-                    val adapter = Adapter_image(listRepo)
+                    val adapter = Adapter_image_sub(listRepo, this@Image_sub)
                     image_id.adapter = adapter
+
+                    if(response.body()!!.status == "error") dialog_erroe()
+                        .show(Activity.supportFragmentManager, "dialog")
                 }
 
                 override fun onFailure(call: Call<Post>, t: Throwable) {
@@ -66,6 +66,20 @@ class Image_sub : BaseFragment() {
             })
 
         return inflater.inflate(R.layout.image, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        main_breed_image.text = main_b.toString()
+
+        share.setOnClickListener {
+            dialog_share().show(Activity.supportFragmentManager, "dialog")
+        }
+
+        back.setOnClickListener{
+            openPage(Main_Breeds())
+        }
+
     }
 
     private fun openPage(fragment: BaseFragment) {

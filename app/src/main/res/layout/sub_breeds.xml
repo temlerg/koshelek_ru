@@ -38,7 +38,7 @@
         android:id="@+id/all_breeds"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ᐸ all_breeds"
+        android:text="ᐸ All breeds"
         android:textColor="#000"
         android:textSize="21dp"
         app:layout_constraintBottom_toBottomOf="@+id/main_breed"

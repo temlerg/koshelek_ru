@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.koshelek_ru.Activity.dialog_erroe
+import com.example.koshelek_ru.Activity.dialog_share
 import com.example.koshelek_ru.R
 import com.example.koshelek_ru.models.Repository
 import com.example.koshelek_ru.network.Post
@@ -14,6 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import com.example.koshelek_ru.fragment.Sub_breeds
+import kotlinx.android.synthetic.main.image.*
 
 
 class Main_Breeds : BaseFragment() {
@@ -57,6 +60,9 @@ class Main_Breeds : BaseFragment() {
                         })
                     }
                     recycleList.adapter = adapter
+
+                    if(response.body()!!.status == "error") dialog_erroe()
+                        .show(Activity.supportFragmentManager, "dialog")
                 }
             }
 
@@ -70,6 +76,12 @@ class Main_Breeds : BaseFragment() {
             container,
             false
         )
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        list.setOnClickListener { openPage(Main_Breeds()) }
+        like.setOnClickListener { openPage(Like()) }
     }
 
     private fun openPage(fragment: BaseFragment) {

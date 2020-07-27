@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.koshelek_ru.Activity.dialog_erroe
 import com.example.koshelek_ru.R
 import com.example.koshelek_ru.models.Repository
 import com.example.koshelek_ru.network.Post
@@ -56,6 +57,9 @@ class Sub_breeds : BaseFragment() {
                     openPage(Image_sub.getInstance(s, breed.toString()))
                 }
                 recycleList_sub.adapter = adapter
+
+                if(response.body()!!.status == "error") dialog_erroe()
+                    .show(Activity.supportFragmentManager, "dialog")
             }
 
             override fun onFailure(call: Call<Post>, t: Throwable) {
