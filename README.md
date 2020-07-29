@@ -16,3 +16,4 @@ Used:
 - Retrofit2
 - okhttp3
 - Glide
+- Room
