@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
 import com.example.koshelek_ru.Activity.dialog_erroe
-import com.example.koshelek_ru.Activity.dialog_share
+import com.example.koshelek_ru.DB.AppDatabase
 import com.example.koshelek_ru.R
 import com.example.koshelek_ru.models.Repository
 import com.example.koshelek_ru.network.Post
@@ -15,11 +16,16 @@ import kotlinx.android.synthetic.main.activity_main_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import com.example.koshelek_ru.fragment.Sub_breeds
-import kotlinx.android.synthetic.main.image.*
 
 
 class Main_Breeds : BaseFragment() {
+
+    var db = context?.let {
+        Room.databaseBuilder(
+            it,
+        AppDatabase::class.java, "database"
+    ).build()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,12 +1,15 @@
 package com.example.koshelek_ru.fragment
 
 import android.os.Bundle
+import android.provider.SyncStateContract.Helpers.insert
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.koshelek_ru.Activity.dialog_erroe
 import com.example.koshelek_ru.Activity.dialog_share
+import com.example.koshelek_ru.App
+import com.example.koshelek_ru.DB.*
 import com.example.koshelek_ru.R
 import com.example.koshelek_ru.models.Repository
 import com.example.koshelek_ru.network.Post
@@ -19,6 +22,10 @@ import retrofit2.Response
 
 class Image : BaseFragment() {
     private var breed: String? = null
+
+    var db: AppDatabase? = App.instance!!.database
+    var Dao: Dao_b = db!!.dao_b()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,10 +56,15 @@ class Image : BaseFragment() {
             override fun onResponse(call: Call<Post>, response: Response<Post>) {
                 val listRepo = response.body()!!.message
                 image_id.layoutManager = LinearLayoutManager(context)
-                val adapter = Adapter_image(listRepo, this@Image)
+                val adapter = Adapter_image(listRepo, this@Image) {
+                    val s = it
+                    val like_db = Like_DB(breed_like = breed.toString(), im = s, size = 1)
+                    Dao.insert(like_db)
+                }
                 image_id.adapter = adapter
 
-                if(response.body()!!.status == "error") dialog_erroe()
+
+                if (response.body()!!.status == "error") dialog_erroe()
                     .show(Activity.supportFragmentManager, "dialog")
             }
 

@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.koshelek_ru.Activity.dialog_erroe
 import com.example.koshelek_ru.Activity.dialog_share
+import com.example.koshelek_ru.App
+import com.example.koshelek_ru.DB.*
 import com.example.koshelek_ru.R
 import com.example.koshelek_ru.models.Repository
 import com.example.koshelek_ru.network.Post
@@ -20,6 +22,10 @@ import retrofit2.Response
 class Image_sub : BaseFragment() {
     private var sub: String? = null
     private var main_b: String? = null
+
+    var db: AppDatabase? = App.instance!!.database
+    var Dao: Dao_b = db!!.dao_b()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,10 +59,14 @@ class Image_sub : BaseFragment() {
 
                     val listRepo = response.body()!!.message
                     image_id.layoutManager = LinearLayoutManager(context)
-                    val adapter = Adapter_image_sub(listRepo, this@Image_sub)
+                    val adapter = Adapter_image_sub(listRepo, this@Image_sub) {
+                        val s = it
+                        val like_db = Like_DB(breed_like = sub.toString(), im = s, size = 1)
+                        Dao.insert(like_db)
+                    }
                     image_id.adapter = adapter
 
-                    if(response.body()!!.status == "error") dialog_erroe()
+                    if (response.body()!!.status == "error") dialog_erroe()
                         .show(Activity.supportFragmentManager, "dialog")
                 }
 
@@ -76,7 +86,7 @@ class Image_sub : BaseFragment() {
             dialog_share().show(Activity.supportFragmentManager, "dialog")
         }
 
-        back.setOnClickListener{
+        back.setOnClickListener {
             openPage(Main_Breeds())
         }
 
